@@ -5,19 +5,19 @@ import { IBird } from "@/interfaces/IBird";
 import { useEffect, useState } from "react";
 
 export default function Home() {
-  const [passarosJogando, setPassarosJogando] = useState<IBird[]>([]);
+  const [birdsPlaying, setbirdsPlaying] = useState<IBird[]>([]);
   const [showBirdChoice, setShowBirdChoice] = useState<boolean>(true);
   const [showBoard, setShowBoard] = useState<boolean>(false);
 
   useEffect(() => {
-    if (passarosJogando.length === 2) {
+    if (birdsPlaying.length === 2) {
       setShowBirdChoice(false);
       setShowBoard(true);
     }
-  }, [passarosJogando]);
+  }, [birdsPlaying]);
 
-  const handleConfirmGamer = (bird: IBird) => {
-    setPassarosJogando((oldBirds) => [...oldBirds, bird]);
+  const handleConfirmPlayer = (bird: IBird) => {
+    setbirdsPlaying((oldBirds) => [...oldBirds, bird]);
   };
 
   return (
@@ -27,11 +27,11 @@ export default function Home() {
       </h1>
       {showBirdChoice && (
         <BirdChoice
-          setGamer={handleConfirmGamer}
-          player={`Jogador ${passarosJogando.length + 1}`}
+          setPlayer={handleConfirmPlayer}
+          birdsPlaying={birdsPlaying}
         />
       )}
-      {showBoard && <Board birds={passarosJogando} />}
+      {showBoard && <Board birds={birdsPlaying} />}
     </div>
   );
 }

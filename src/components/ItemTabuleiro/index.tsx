@@ -1,4 +1,5 @@
 import { IBird } from "@/interfaces/IBird";
+import Image from "next/image";
 import { useState } from "react";
 
 export interface IItemTabuleiroProps {
@@ -13,14 +14,17 @@ const ItemTabuleiro: React.FC<IItemTabuleiroProps> = ({
     key
 }) => {
     const [disabled, setDisabled] = useState<boolean>(false);
+
     const handleClick = () => {
         if (bird) {
             onClick(bird);
         }
         setDisabled(true);
     };
+
     return (
         <button
+            key={key}
             onClick={handleClick}
             disabled={disabled}
             className={`bg-green-700
@@ -30,6 +34,15 @@ const ItemTabuleiro: React.FC<IItemTabuleiroProps> = ({
             justify-center
             ${disabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'}
         `}>
+            {bird && (
+                <Image
+                    src={bird?.urlImage ?? ""}
+                    alt={bird?.name ?? ""}
+                    width={200}
+                    height={200}
+                    className="object-cover w-full h-full"
+                />
+            )}
         </button>
     );
 }
