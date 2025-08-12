@@ -23,9 +23,16 @@ export default function Home() {
     setBirdsPlaying(prev => [...prev, bird]);
   };
 
+  const handleRestart = () => {
+    setBirdsPlaying([]);
+    setShowBirdChoice(true);
+    setShowBoard(false);
+    setPlayerNow(null);
+  };
+
   return (
-    <div className="flex min-h-screen flex-col items-center bg-amber-300">
-      <h1 className="text-4xl font-bold text-indigo-800 text-center p-4">
+    <div className="flex min-h-screen flex-col items-center bg-gradient-to-b from-white to-green-900">
+      <h1 className="text-4xl font-bold text-green-900 text-center p-10">
         Jogo dos Passarinhos
       </h1>
 
@@ -37,7 +44,17 @@ export default function Home() {
         />
       )}
 
-      {showBoard && <Board birds={birdsPlaying} />}
+      {showBoard && (
+        <>
+          <Board birds={birdsPlaying} />
+          <button
+            onClick={handleRestart}
+            className={`bg-green-900 hover:bg-green-800" : "bg-gray-400 cursor-not-allowed text-white px-4 py-2 rounded mt-4 transition-colors`}
+          >
+            Reiniciar Jogo
+          </button>
+        </>
+      )}
     </div>
   );
 }

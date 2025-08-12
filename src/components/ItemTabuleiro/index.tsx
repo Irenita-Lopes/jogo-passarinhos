@@ -27,7 +27,7 @@ const ItemTabuleiro: React.FC<IItemTabuleiroProps> = ({
             key={key}
             onClick={handleClick}
             disabled={disabled}
-            className={`bg-green-700
+            className={`bg-green-900
             text-zinc-900 text-9xl
             flex
             items-center 

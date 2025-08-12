@@ -12,8 +12,8 @@ const CardBird: React.FC<ICardBirdProps> = ({ bird, setSelectedBird, playerSelec
     return (
         <button
             onClick={() => setSelectedBird(bird)}
-            className={`relative w-full h-full bg-blue-500 cursor-pointer border-4 transition-all
-                ${isSelected ? "border-yellow-400 shadow-lg scale-105" : "border-transparent"}
+            className={`relative w-full h-full bg-green-900 cursor-pointer border-4 transition-all
+                ${isSelected ? "border-green-900 shadow-lg scale-105" : "border-transparent"}
                 ${playerSelected ? "opacity-60 pointer-events-none" : ""}
             `}
         >
